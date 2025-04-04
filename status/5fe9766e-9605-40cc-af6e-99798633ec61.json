@@ -1,0 +1,11 @@
+{
+  "job_id": "5fe9766e-9605-40cc-af6e-99798633ec61",
+  "status": "failed",
+  "current_step": "downloading",
+  "progress": 5.0,
+  "message": "Processing failed: Failed to download video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error",
+  "error": "Failed to download video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error",
+  "clips": [],
+  "start_time": 1743798362.9313438,
+  "update_time": 1743798786.454122
+}

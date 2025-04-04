@@ -1,6 +1,6 @@
 import { Download } from 'lucide-react'
-import { Button } from './ui/button'
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from './ui/card'
+import { Button } from '../components/ui/button'
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../components/ui/card'
 import { formatDuration } from '../lib/utils'
 import { VideoClip } from '../types'
 
@@ -28,12 +28,12 @@ function VideoClipCard({ clip }: VideoClipCardProps) {
   }
 
   return (
-    <Card className="overflow-hidden border border-slate-200 dark:border-slate-800">
+    <Card className="overflow-hidden">
       <CardHeader className="p-4">
         <CardTitle className="text-lg truncate">{clip.title}</CardTitle>
       </CardHeader>
       <CardContent className="p-0">
-        <div className="relative aspect-[9/16] bg-slate-100 dark:bg-slate-800">
+        <div className="relative aspect-[9/16] bg-muted">
           <video 
             src={`/api/static/${clip.file_path.split('/').slice(-2).join('/')}`}
             className="w-full h-full object-contain"
@@ -42,14 +42,13 @@ function VideoClipCard({ clip }: VideoClipCardProps) {
         </div>
       </CardContent>
       <CardFooter className="p-4 flex justify-between items-center">
-        <div className="text-sm text-slate-500 dark:text-slate-400">
+        <div className="text-sm text-muted-foreground">
           {formatDuration(clip.duration)}
         </div>
         <Button 
           size="sm" 
           variant="outline" 
           onClick={handleDownload}
-          className="hover:bg-slate-100 dark:hover:bg-slate-800"
         >
           <Download className="w-4 h-4 mr-2" />
           Download

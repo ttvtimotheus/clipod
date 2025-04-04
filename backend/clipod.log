@@ -71,3 +71,73 @@ Exception: Failed to download video: ERROR: You have requested merging of multip
 2025-04-04 22:26:02,931 - clipod - INFO - Starting job 5fe9766e-9605-40cc-af6e-99798633ec61 for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
 2025-04-04 22:26:02,931 - clipod.status_manager - INFO - Created job 5fe9766e-9605-40cc-af6e-99798633ec61
 2025-04-04 22:26:02,931 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 22:33:06,445 - clipod.processor - ERROR - Error downloading video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 138, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1809, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1868, in process_ie_result
+    ie_result = self.process_video_result(ie_result, download=download)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 3040, in process_video_result
+    self.process_info(new_info)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 185, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 3466, in process_info
+    self.report_error(f'{msg}. Aborting due to --abort-on-error')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1111, in report_error
+    self.trouble(f'{self._format_err("ERROR:", self.Styles.ERROR)} {message}', *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1050, in trouble
+    raise DownloadError(message, exc_info)
+yt_dlp.utils.DownloadError: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+2025-04-04 22:33:06,451 - clipod.processor - ERROR - Error processing video: Failed to download video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 138, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1809, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1868, in process_ie_result
+    ie_result = self.process_video_result(ie_result, download=download)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 3040, in process_video_result
+    self.process_info(new_info)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 185, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 3466, in process_info
+    self.report_error(f'{msg}. Aborting due to --abort-on-error')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1111, in report_error
+    self.trouble(f'{self._format_err("ERROR:", self.Styles.ERROR)} {message}', *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1050, in trouble
+    raise DownloadError(message, exc_info)
+yt_dlp.utils.DownloadError: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 66, in process_youtube_video
+    video_path = await download_youtube_video(url, job_id)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 153, in download_youtube_video
+    raise Exception(f"Failed to download video: {str(e)}")
+Exception: Failed to download video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+2025-04-04 22:33:06,454 - clipod.status_manager - ERROR - Job 5fe9766e-9605-40cc-af6e-99798633ec61 failed: Failed to download video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+2025-04-04 22:44:08,216 - clipod - INFO - Starting job 975f9b36-71cd-42d6-a0fd-9c87de6ac22a for URL: https://youtu.be/_-fO_TUjIPg
+2025-04-04 22:44:08,219 - clipod.status_manager - INFO - Created job 975f9b36-71cd-42d6-a0fd-9c87de6ac22a
+2025-04-04 22:44:08,224 - clipod.processor - INFO - Downloading video from https://youtu.be/_-fO_TUjIPg
