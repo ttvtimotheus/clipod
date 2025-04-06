@@ -8,6 +8,8 @@ import re
 from typing import List, Dict, Any, Optional
 import tempfile
 import shutil
+import httpx
+import asyncio
 
 import yt_dlp
 import openai
@@ -25,6 +27,10 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 if not OPENAI_API_KEY:
     logger.warning("OpenAI API key not found in environment variables")
 
+# Get ffmpeg path from environment
+FFMPEG_PATH = os.getenv("FFMPEG_PATH", "ffmpeg")
+logger.info(f"Using ffmpeg path: {FFMPEG_PATH}")
+
 # Base directories
 BASE_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "../../../"))
 DOWNLOADS_DIR = os.path.join(BASE_DIR, "downloads")
@@ -41,170 +47,380 @@ WHISPER_MODEL = os.getenv("WHISPER_MODEL", "medium")
 
 async def process_youtube_video(url: str, job_id: str, status_manager):
     """
-    Process a YouTube video to generate TikTok clips
-    
-    Steps:
-    1. Download the video
-    2. Transcribe the audio
-    3. Identify highlights using GPT-4o
-    4. Generate clips
+    Process a YouTube video by downloading, transcribing, and generating clips
     """
+    logger.info(f"Starting processing job {job_id} for URL: {url}")
+    logger.info(f"Using directories: Downloads={DOWNLOADS_DIR}, Transcripts={TRANSCRIPTS_DIR}, Clips={CLIPS_DIR}")
+    
     try:
-        # Create job directory
-        job_dir = os.path.join(CLIPS_DIR, job_id)
-        os.makedirs(job_dir, exist_ok=True)
-        
         # Step 1: Download the video
-        status_manager.update_status(
-            job_id,
-            status="processing",
-            current_step="downloading",
-            progress=5.0,
-            message="Downloading YouTube video"
-        )
+        logger.info(f"Downloading video from {url}")
+        status_manager.update_status(job_id=job_id, status="processing", current_step="downloading", progress=0, message="Downloading video")
         
-        video_path = await download_youtube_video(url, job_id)
+        # Directly implement video download here to avoid issues with yt-dlp library
+        try:
+            # Create job directory in downloads
+            job_download_dir = os.path.join(DOWNLOADS_DIR, job_id)
+            os.makedirs(job_download_dir, exist_ok=True)
+            
+            # Output file path
+            output_file = os.path.join(job_download_dir, "video.mp4")
+            
+            # Create a shell script to download the video
+            script_path = os.path.join(job_download_dir, "download_script.sh")
+            with open(script_path, "w") as f:
+                f.write(f"""#!/bin/bash
+cd "{job_download_dir}"
+echo "Starting download of {url} at $(date)"
+python3 -m yt_dlp -f "best[height<=720]" --ffmpeg-location "{FFMPEG_PATH}" -o "video.mp4" "{url}" --verbose
+echo "Download completed at $(date)"
+""")
+            
+            # Make the script executable
+            os.chmod(script_path, 0o755)
+            
+            # Run the script as a separate process
+            logger.info(f"Running download script: {script_path}")
+            
+            # Use a shorter timeout for testing
+            # In production, you might want to use a longer timeout or no timeout
+            timeout_seconds = 600  # 10 minutes
+            
+            # Start the process
+            process = subprocess.Popen(
+                ["/bin/bash", script_path],
+                stdout=subprocess.PIPE,
+                stderr=subprocess.PIPE,
+                cwd=job_download_dir,
+                text=True,
+                bufsize=1
+            )
+            
+            # Create a log file for the output
+            log_file_path = os.path.join(job_download_dir, "download_log.txt")
+            with open(log_file_path, 'w') as log_file:
+                log_file.write(f"Download started at {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+                log_file.write(f"Command: /bin/bash {script_path}\n\n")
+                
+                # Use a non-blocking approach to read output while the process is running
+                try:
+                    start_time = time.time()
+                    while process.poll() is None:
+                        # Check if we've exceeded the timeout
+                        if time.time() - start_time > timeout_seconds:
+                            process.kill()
+                            log_file.write(f"\nProcess killed after {timeout_seconds} seconds timeout\n")
+                            raise TimeoutError(f"Download process timed out after {timeout_seconds} seconds")
+                        
+                        # Read output without blocking
+                        stdout_line = process.stdout.readline()
+                        if stdout_line:
+                            log_file.write(f"STDOUT: {stdout_line}")
+                            logger.debug(f"Download output: {stdout_line.strip()}")
+                        
+                        stderr_line = process.stderr.readline()
+                        if stderr_line:
+                            log_file.write(f"STDERR: {stderr_line}")
+                            logger.debug(f"Download error: {stderr_line.strip()}")
+                        
+                        # Sleep briefly to avoid CPU spinning
+                        if not stdout_line and not stderr_line:
+                            await asyncio.sleep(0.1)
+                    
+                    # Process has finished, get any remaining output
+                    stdout, stderr = process.communicate()
+                    if stdout:
+                        log_file.write(f"STDOUT (final): {stdout}\n")
+                    if stderr:
+                        log_file.write(f"STDERR (final): {stderr}\n")
+                    
+                    log_file.write(f"\nProcess completed with return code {process.returncode}\n")
+                    
+                    if process.returncode != 0:
+                        raise Exception(f"Download script failed with return code {process.returncode}")
+                
+                except Exception as e:
+                    log_file.write(f"\nError during download: {str(e)}\n")
+                    raise
+            
+            # Check if file exists
+            if not os.path.exists(output_file):
+                # Try to find any video file in the directory
+                video_files = [f for f in os.listdir(job_download_dir) if f.endswith(('.mp4', '.webm', '.mkv'))]
+                if video_files:
+                    # Use the first video file found
+                    output_file = os.path.join(job_download_dir, video_files[0])
+                    logger.info(f"Found video file: {output_file}")
+                else:
+                    # Check the log file for clues
+                    with open(log_file_path, 'r') as log_file:
+                        log_content = log_file.read()
+                        logger.error(f"No video file found. Log content: {log_content[:1000]}...")
+                    
+                    raise Exception("No video file found after download. Check the log file for details.")
+            
+            video_path = output_file
+            logger.info(f"Successfully downloaded video to {video_path}")
+            
+        except Exception as e:
+            logger.error(f"Error downloading video: {str(e)}", exc_info=True)
+            status_manager.update_status(
+                job_id=job_id,
+                status="failed",
+                current_step="downloading",
+                progress=0,
+                message="Failed to download video",
+                error=f"Download error: {str(e)}"
+            )
+            return
         
         # Step 2: Transcribe the video
-        status_manager.update_status(
-            job_id,
-            current_step="transcribing",
-            progress=25.0,
-            message="Transcribing video audio"
-        )
+        logger.info(f"Transcribing video {video_path}")
+        status_manager.update_status(job_id=job_id, status="processing", current_step="transcribing", progress=20, message="Transcribing video")
         
-        transcript_path, srt_path = await transcribe_video(video_path, job_id)
+        try:
+            transcript_path, srt_path = await transcribe_video(video_path, job_id)
+            logger.info(f"Transcription completed: {transcript_path}")
+        except Exception as e:
+            logger.error(f"Error transcribing video: {str(e)}", exc_info=True)
+            status_manager.update_status(
+                job_id=job_id,
+                status="failed",
+                current_step="transcribing",
+                progress=20,
+                message="Failed to transcribe video",
+                error=f"Transcription error: {str(e)}"
+            )
+            return
         
         # Step 3: Identify highlights
-        status_manager.update_status(
-            job_id,
-            current_step="analyzing",
-            progress=50.0,
-            message="Analyzing transcript for highlights"
-        )
+        logger.info(f"Identifying highlights from transcript")
+        status_manager.update_status(job_id=job_id, status="processing", current_step="analyzing", progress=40, message="Identifying highlights")
         
-        highlights = await identify_highlights(transcript_path, job_id)
+        try:
+            highlights = await identify_highlights(transcript_path, job_id)
+            logger.info(f"Identified {len(highlights)} highlights")
+        except Exception as e:
+            logger.error(f"Error identifying highlights: {str(e)}", exc_info=True)
+            status_manager.update_status(
+                job_id=job_id,
+                status="failed",
+                current_step="analyzing",
+                progress=40,
+                message="Failed to identify highlights",
+                error=f"Analysis error: {str(e)}"
+            )
+            return
         
         # Step 4: Generate clips
+        logger.info(f"Generating clips from highlights")
+        status_manager.update_status(job_id=job_id, status="processing", current_step="generating_clips", progress=60, message="Generating clips")
+        
+        try:
+            clips = await generate_clips(video_path, srt_path, highlights, job_id)
+            logger.info(f"Generated {len(clips)} clips")
+        except Exception as e:
+            logger.error(f"Error generating clips: {str(e)}", exc_info=True)
+            status_manager.update_status(
+                job_id=job_id,
+                status="failed",
+                current_step="generating_clips",
+                progress=60,
+                message="Failed to generate clips",
+                error=f"Clip generation error: {str(e)}"
+            )
+            return
+        
+        # Update status to completed
         status_manager.update_status(
-            job_id,
-            current_step="generating_clips",
-            progress=75.0,
-            message=f"Generating {len(highlights)} clips"
+            job_id=job_id,
+            status="completed",
+            current_step="completed",
+            progress=100,
+            message="Processing completed",
+            clips=clips
         )
         
-        clips = await generate_clips(video_path, srt_path, highlights, job_id)
-        
-        # Update status with generated clips
-        for clip in clips:
-            status_manager.add_clip(job_id, clip)
-        
-        # Mark job as completed
-        status_manager.mark_completed(job_id)
-        
-        # Save status to disk
-        status_manager.save_to_disk()
-        
-        return clips
+        logger.info(f"Processing completed for job {job_id}")
         
     except Exception as e:
         logger.error(f"Error processing video: {str(e)}", exc_info=True)
-        status_manager.mark_failed(job_id, str(e))
-        status_manager.save_to_disk()
-        raise e
+        status_manager.update_status(
+            job_id=job_id,
+            status="failed",
+            current_step="processing",
+            progress=0,
+            message="Processing failed",
+            error=f"Processing error: {str(e)}"
+        )
 
 async def download_youtube_video(url: str, job_id: str) -> str:
     """
-    Download a YouTube video using yt-dlp
+    Download a YouTube video using direct HTTP request
     """
-    logger.info(f"Downloading video from {url}")
-    
-    # Create download directory for this job
-    job_download_dir = os.path.join(DOWNLOADS_DIR, job_id)
-    os.makedirs(job_download_dir, exist_ok=True)
-    
-    # yt-dlp options
-    ydl_opts = {
-        'format': 'bestvideo[ext=mp4]+bestaudio[ext=m4a]/best[ext=mp4]/best',
-        'outtmpl': os.path.join(job_download_dir, '%(title)s.%(ext)s'),
-        'noplaylist': True,
-        'quiet': False,
-        'no_warnings': False,
-        'ignoreerrors': False,
-    }
-    
     try:
-        with yt_dlp.YoutubeDL(ydl_opts) as ydl:
-            info = ydl.extract_info(url, download=True)
-            video_title = info.get('title', 'video')
-            video_path = os.path.join(job_download_dir, f"{video_title}.mp4")
+        # Create job directory in downloads
+        job_download_dir = os.path.join(DOWNLOADS_DIR, job_id)
+        os.makedirs(job_download_dir, exist_ok=True)
+        
+        # Simple output file path
+        output_file = os.path.join(job_download_dir, "video.mp4")
+        
+        # Test if ffmpeg works directly
+        logger.info(f"Testing ffmpeg at path: {FFMPEG_PATH}")
+        try:
+            result = subprocess.run([FFMPEG_PATH, "-version"], capture_output=True, text=True, check=True)
+            logger.info(f"FFmpeg test result: {result.stdout[:100]}...")
+        except subprocess.CalledProcessError as e:
+            logger.error(f"FFmpeg test failed with return code {e.returncode}: {e.stderr}")
+            raise Exception(f"FFmpeg test failed: {e.stderr}")
+        except Exception as e:
+            logger.error(f"Error testing ffmpeg: {str(e)}")
+            raise Exception(f"Error testing ffmpeg: {str(e)}")
+        
+        # Try a completely different approach - use youtube-dl as a separate process
+        # This avoids the Python library issues
+        logger.info(f"Downloading video from {url} using youtube-dl as separate process")
+        
+        # Create a temporary script to run youtube-dl
+        script_path = os.path.join(job_download_dir, "download_script.sh")
+        with open(script_path, "w") as f:
+            f.write(f"""#!/bin/bash
+cd "{job_download_dir}"
+python3 -m yt_dlp -f "best[height<=720]" --ffmpeg-location "{FFMPEG_PATH}" -o "video.mp4" "{url}"
+""")
+        
+        # Make the script executable
+        os.chmod(script_path, 0o755)
+        
+        # Run the script in a separate process
+        logger.info(f"Running download script: {script_path}")
+        process = subprocess.Popen(
+            ["/bin/bash", script_path],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            cwd=job_download_dir
+        )
+        
+        # Wait for the process to complete with a timeout
+        try:
+            stdout, stderr = process.communicate(timeout=300)
+            if process.returncode != 0:
+                error_message = stderr.decode('utf-8')
+                logger.error(f"Download script failed: {error_message}")
+                raise Exception(f"Download script failed: {error_message}")
+            else:
+                logger.info(f"Download script completed successfully")
+        except subprocess.TimeoutExpired:
+            process.kill()
+            logger.error("Download script timed out after 300 seconds")
+            raise Exception("Download timed out after 300 seconds")
+        
+        # Check if file exists
+        if not os.path.exists(output_file):
+            # Try to find any video file in the directory
+            video_files = [f for f in os.listdir(job_download_dir) if f.endswith(('.mp4', '.webm', '.mkv'))]
+            if video_files:
+                # Use the first video file found
+                output_file = os.path.join(job_download_dir, video_files[0])
+                logger.info(f"Found video file: {output_file}")
+            else:
+                logger.error(f"No video file found in {job_download_dir}")
+                raise Exception(f"Failed to download video: No video file found")
+        
+        logger.info(f"Successfully downloaded video to {output_file}")
+        return output_file
+    
+    except Exception as e:
+        logger.error(f"Error downloading video: {str(e)}", exc_info=True)
+        raise Exception(f"Failed to download video: {str(e)}")
+
+async def download_youtube_video_alternative(url: str, job_id: str) -> str:
+    """
+    Download a YouTube video using direct HTTP request with httpx
+    """
+    try:
+        # Create job directory in downloads
+        job_download_dir = os.path.join(DOWNLOADS_DIR, job_id)
+        os.makedirs(job_download_dir, exist_ok=True)
+        
+        # Simple output file path
+        output_file = os.path.join(job_download_dir, "video.mp4")
+        
+        # Use httpx to download the video
+        async with httpx.AsyncClient() as client:
+            response = await client.get(url, follow_redirects=True, stream=True)
+            response.raise_for_status()
             
-            # Check if the file exists, if not, try to find it
-            if not os.path.exists(video_path):
-                for file in os.listdir(job_download_dir):
-                    if file.endswith(".mp4"):
-                        video_path = os.path.join(job_download_dir, file)
-                        break
-            
-            logger.info(f"Downloaded video to {video_path}")
-            return video_path
+            with open(output_file, 'wb') as f:
+                num_bytes_downloaded = response.num_bytes_downloaded
+                total_bytes = int(response.headers['Content-Length'])
+                for chunk in response.iter_bytes():
+                    f.write(chunk)
+                    num_bytes_downloaded += len(chunk)
+                    logger.info(f"Downloading video: {num_bytes_downloaded / total_bytes * 100:.2f}%")
+        
+        logger.info(f"Successfully downloaded video to {output_file}")
+        return output_file
+    
     except Exception as e:
         logger.error(f"Error downloading video: {str(e)}", exc_info=True)
         raise Exception(f"Failed to download video: {str(e)}")
 
 async def transcribe_video(video_path: str, job_id: str) -> tuple:
     """
-    Transcribe video using Whisper
+    Transcribe a video using OpenAI's Whisper model
+    Returns the path to the transcript file and SRT file
     """
-    logger.info(f"Transcribing video {video_path}")
+    logger.info(f"Transcribing video {video_path} for job {job_id}")
     
-    # Create transcript directory for this job
+    # Create transcripts directory if it doesn't exist
     job_transcript_dir = os.path.join(TRANSCRIPTS_DIR, job_id)
     os.makedirs(job_transcript_dir, exist_ok=True)
     
-    # Base filename without extension
-    base_name = os.path.splitext(os.path.basename(video_path))[0]
-    
-    # Output paths
-    transcript_path = os.path.join(job_transcript_dir, f"{base_name}.txt")
-    srt_path = os.path.join(job_transcript_dir, f"{base_name}.srt")
+    transcript_path = os.path.join(job_transcript_dir, "transcript.json")
+    srt_path = os.path.join(job_transcript_dir, "transcript.srt")
     
     try:
-        # Run whisper command
-        cmd = [
-            "python", "-m", "whisper", 
-            video_path,
-            "--model", WHISPER_MODEL,
-            "--output_dir", job_transcript_dir,
-            "--output_format", "srt,txt"
-        ]
+        # Temporary fix for SSL certificate issues on macOS
+        import ssl
+        ssl._create_default_https_context = ssl._create_unverified_context
         
-        process = subprocess.Popen(
-            cmd,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            text=True
-        )
+        import whisper
         
-        stdout, stderr = process.communicate()
+        # Load the Whisper model
+        model_size = os.environ.get("WHISPER_MODEL", "medium")
+        logger.info(f"Loading Whisper model: {model_size}")
+        model = whisper.load_model(model_size)
         
-        if process.returncode != 0:
-            logger.error(f"Whisper transcription failed: {stderr}")
-            raise Exception(f"Transcription failed: {stderr}")
+        # Transcribe the video
+        logger.info(f"Starting transcription of {video_path}")
+        result = model.transcribe(video_path)
+        
+        # Save the transcript to a JSON file
+        with open(transcript_path, "w") as f:
+            json.dump(result, f, indent=2)
+        
+        # Convert the transcript to SRT format
+        segments = result["segments"]
+        with open(srt_path, "w") as f:
+            for i, segment in enumerate(segments):
+                start_time = segment["start"]
+                end_time = segment["end"]
+                text = segment["text"].strip()
+                
+                # Format times as HH:MM:SS,mmm
+                start_formatted = format_time(start_time)
+                end_formatted = format_time(end_time)
+                
+                # Write the SRT entry
+                f.write(f"{i+1}\n")
+                f.write(f"{start_formatted} --> {end_formatted}\n")
+                f.write(f"{text}\n\n")
         
         logger.info(f"Transcription completed: {transcript_path}")
-        
-        # Ensure the files exist
-        if not os.path.exists(transcript_path) or not os.path.exists(srt_path):
-            # Try to find the files with different names
-            for file in os.listdir(job_transcript_dir):
-                if file.endswith(".txt"):
-                    transcript_path = os.path.join(job_transcript_dir, file)
-                elif file.endswith(".srt"):
-                    srt_path = os.path.join(job_transcript_dir, file)
-        
         return transcript_path, srt_path
-        
+    
     except Exception as e:
         logger.error(f"Error transcribing video: {str(e)}", exc_info=True)
         raise Exception(f"Failed to transcribe video: {str(e)}")
@@ -465,3 +681,13 @@ def seconds_to_srt_time(seconds: float) -> str:
     milliseconds = int((seconds - int(seconds)) * 1000)
     
     return f"{hours:02d}:{minutes:02d}:{int(seconds):02d},{milliseconds:03d}"
+
+def format_time(seconds: float) -> str:
+    """
+    Format a timestamp in seconds to HH:MM:SS format
+    """
+    hours = int(seconds // 3600)
+    minutes = int((seconds % 3600) // 60)
+    seconds = seconds % 60
+    
+    return f"{hours:02d}:{minutes:02d}:{seconds:05.2f}"

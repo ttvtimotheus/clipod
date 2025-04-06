@@ -141,3 +141,940 @@ Exception: Failed to download video: ERROR: You have requested merging of multip
 2025-04-04 22:44:08,216 - clipod - INFO - Starting job 975f9b36-71cd-42d6-a0fd-9c87de6ac22a for URL: https://youtu.be/_-fO_TUjIPg
 2025-04-04 22:44:08,219 - clipod.status_manager - INFO - Created job 975f9b36-71cd-42d6-a0fd-9c87de6ac22a
 2025-04-04 22:44:08,224 - clipod.processor - INFO - Downloading video from https://youtu.be/_-fO_TUjIPg
+2025-04-04 22:49:39,112 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 22:49:53,030 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 22:50:39,935 - clipod - INFO - Starting job 72d6a3dc-75f1-464a-a4f9-6f45cbe9362c for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 22:50:39,935 - clipod.status_manager - INFO - Created job 72d6a3dc-75f1-464a-a4f9-6f45cbe9362c
+2025-04-04 22:50:39,936 - clipod.processor - INFO - Starting processing job 72d6a3dc-75f1-464a-a4f9-6f45cbe9362c for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 22:50:39,936 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 22:50:39,937 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 22:57:43,660 - clipod.processor - ERROR - Error downloading video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1809, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1868, in process_ie_result
+    ie_result = self.process_video_result(ie_result, download=download)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 3040, in process_video_result
+    self.process_info(new_info)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 185, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 3466, in process_info
+    self.report_error(f'{msg}. Aborting due to --abort-on-error')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1111, in report_error
+    self.trouble(f'{self._format_err("ERROR:", self.Styles.ERROR)} {message}', *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1050, in trouble
+    raise DownloadError(message, exc_info)
+yt_dlp.utils.DownloadError: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+2025-04-04 22:57:43,667 - clipod.processor - ERROR - Error downloading video: Failed to download video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+2025-04-04 23:05:46,968 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:06:04,682 - clipod - INFO - Starting job 29b11925-df12-4645-a247-3c7708a75aba for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:06:04,683 - clipod.status_manager - INFO - Created job 29b11925-df12-4645-a247-3c7708a75aba
+2025-04-04 23:06:04,686 - clipod.processor - INFO - Starting processing job 29b11925-df12-4645-a247-3c7708a75aba for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:06:04,686 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:06:04,686 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:07:34,465 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:07:57,257 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:09:46,836 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:10:24,449 - clipod - INFO - Starting job e3227319-70b4-4585-9c0a-d91f73f799cd for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:10:24,450 - clipod.status_manager - INFO - Created job e3227319-70b4-4585-9c0a-d91f73f799cd
+2025-04-04 23:10:24,452 - clipod.processor - INFO - Starting processing job e3227319-70b4-4585-9c0a-d91f73f799cd for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:10:24,452 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:10:24,452 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:12:06,024 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:13:07,345 - clipod.processor - ERROR - Error downloading video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1809, in __extract_info
+    return self.process_ie_result(ie_result, download, extra_info)
+           ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1868, in process_ie_result
+    ie_result = self.process_video_result(ie_result, download=download)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 3040, in process_video_result
+    self.process_info(new_info)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 185, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 3466, in process_info
+    self.report_error(f'{msg}. Aborting due to --abort-on-error')
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1111, in report_error
+    self.trouble(f'{self._format_err("ERROR:", self.Styles.ERROR)} {message}', *args, **kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1050, in trouble
+    raise DownloadError(message, exc_info)
+yt_dlp.utils.DownloadError: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+2025-04-04 23:13:07,348 - clipod.processor - ERROR - Error downloading video: Failed to download video: ERROR: You have requested merging of multiple formats but ffmpeg is not installed. Aborting due to --abort-on-error
+2025-04-04 23:13:07,359 - clipod - INFO - Starting job 087d8282-bf53-4386-9cd3-7a233e29007a for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:13:07,359 - clipod.status_manager - INFO - Created job 087d8282-bf53-4386-9cd3-7a233e29007a
+2025-04-04 23:13:07,359 - clipod.processor - INFO - Starting processing job 087d8282-bf53-4386-9cd3-7a233e29007a for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:13:07,359 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:13:07,359 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:13:23,307 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:17:09,702 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 748, in extract
+    ie_result = self._real_extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/youtube/_video.py", line 3543, in _real_extract
+    webpage, master_ytcfg, player_responses, player_url = self._download_player_responses(url, smuggled_data, video_id, webpage_url)
+                                                          ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/youtube/_video.py", line 3507, in _download_player_responses
+    player_responses, player_url = self._extract_player_responses(
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        self._get_requested_clients(url, smuggled_data),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        video_id, webpage, master_ytcfg, smuggled_data)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/youtube/_video.py", line 3078, in _extract_player_responses
+    pr = pr or self._extract_player_response(
+               ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        client, video_id,
+        ^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+        data_sync_id=data_sync_id,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+        po_token=player_po_token)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/youtube/_video.py", line 2930, in _extract_player_response
+    return self._extract_response(
+           ~~~~~~~~~~~~~~~~~~~~~~^
+        item_id=video_id, ep='player', query=yt_query,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<2 lines>...
+        note='Downloading {} player API JSON'.format(client.replace('_', ' ').strip()),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) or None
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/youtube/_base.py", line 1023, in _extract_response
+    response = self._call_api(
+        ep=ep, fatal=True, headers=headers,
+        video_id=item_id, query=query, note=note,
+        context=self._extract_context(ytcfg, default_client),
+        api_hostname=api_hostname, default_client=default_client)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/youtube/_base.py", line 608, in _call_api
+    return self._download_json(
+           ~~~~~~~~~~~~~~~~~~~^
+        f'https://{self._select_api_hostname(api_hostname, default_client)}/youtubei/v1/{ep}',
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<5 lines>...
+            'prettyPrint': 'false',
+            ^^^^^^^^^^^^^^^^^^^^^^^
+        }, cndn=lambda _, v: v))
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1145, in download_content
+    res = getattr(self, download_handle.__name__)(url_or_request, video_id, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1103, in download_handle
+    res = self._download_webpage_handle(
+        url_or_request, video_id, note=note, errnote=errnote, fatal=fatal, encoding=encoding,
+        data=data, headers=headers, query=query, expected_status=expected_status,
+        impersonate=impersonate, require_impersonation=require_impersonation)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 968, in _download_webpage_handle
+    urlh = self._request_webpage(url_or_request, video_id, note, errnote, fatal, data=data,
+                                 headers=headers, query=query, expected_status=expected_status,
+                                 impersonate=impersonate, require_impersonation=require_impersonation)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 869, in _request_webpage
+    self.to_screen(f'{video_id}: {note}')
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:17:09,721 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:17:09,733 - clipod - INFO - Starting job d0fc2c75-d456-49fd-b654-0ee9bb52aef7 for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:17:09,733 - clipod.status_manager - INFO - Created job d0fc2c75-d456-49fd-b654-0ee9bb52aef7
+2025-04-04 23:17:09,734 - clipod.processor - INFO - Starting processing job d0fc2c75-d456-49fd-b654-0ee9bb52aef7 for URL: https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:17:09,734 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:17:09,734 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=_-fO_TUjIPg
+2025-04-04 23:17:09,763 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:17:09,764 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:17:09,766 - clipod - INFO - Starting job fcf0bd3b-6750-4561-ab12-81d1a332b7ae for URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+2025-04-04 23:17:09,766 - clipod.status_manager - INFO - Created job fcf0bd3b-6750-4561-ab12-81d1a332b7ae
+2025-04-04 23:17:09,766 - clipod.processor - INFO - Starting processing job fcf0bd3b-6750-4561-ab12-81d1a332b7ae for URL: https://www.youtube.com/watch?v=dQw4w9WgXcQ
+2025-04-04 23:17:09,766 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:17:09,766 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=dQw4w9WgXcQ
+2025-04-04 23:17:09,787 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:17:09,787 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:17:09,790 - clipod - INFO - Starting job b34b6486-1338-44e6-9479-db32b68e45cb for URL: https://youtu.be/0pOmg_5cIOo
+2025-04-04 23:17:09,790 - clipod.status_manager - INFO - Created job b34b6486-1338-44e6-9479-db32b68e45cb
+2025-04-04 23:17:09,790 - clipod.processor - INFO - Starting processing job b34b6486-1338-44e6-9479-db32b68e45cb for URL: https://youtu.be/0pOmg_5cIOo
+2025-04-04 23:17:09,790 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:17:09,790 - clipod.processor - INFO - Downloading video from https://youtu.be/0pOmg_5cIOo
+2025-04-04 23:17:09,811 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:17:09,812 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:18:03,766 - clipod - INFO - Starting job c86a77d8-3b91-4097-b40f-dbc3dfa006c5 for URL: https://www.youtube.com/watch?v=0pOmg_5cIOo
+2025-04-04 23:18:03,767 - clipod.status_manager - INFO - Created job c86a77d8-3b91-4097-b40f-dbc3dfa006c5
+2025-04-04 23:18:03,770 - clipod.processor - INFO - Starting processing job c86a77d8-3b91-4097-b40f-dbc3dfa006c5 for URL: https://www.youtube.com/watch?v=0pOmg_5cIOo
+2025-04-04 23:18:03,771 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:18:03,787 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=0pOmg_5cIOo
+2025-04-04 23:18:03,833 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    info = ydl.extract_info(url, download=True)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:18:03,835 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:27:22,130 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:27:35,518 - clipod - INFO - Starting job b6819c6d-eef2-427b-901d-524c9023ad62 for URL: https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:27:35,520 - clipod.status_manager - INFO - Created job b6819c6d-eef2-427b-901d-524c9023ad62
+2025-04-04 23:27:35,524 - clipod.processor - INFO - Starting processing job b6819c6d-eef2-427b-901d-524c9023ad62 for URL: https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:27:35,524 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:27:35,524 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:27:35,582 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    logger.info(f"Downloading video from {url}")
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:27:35,588 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:28:43,789 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:28:52,291 - clipod - INFO - Starting job d60b7ff5-66f3-43ec-81fa-224040103ad0 for URL: https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:28:52,293 - clipod.status_manager - INFO - Created job d60b7ff5-66f3-43ec-81fa-224040103ad0
+2025-04-04 23:28:52,295 - clipod.processor - INFO - Starting processing job d60b7ff5-66f3-43ec-81fa-224040103ad0 for URL: https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:28:52,295 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:28:52,295 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:28:52,339 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    try:
+    
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:28:52,341 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:29:45,076 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:29:54,913 - clipod - INFO - Starting job 3c47231b-bd2c-4ef6-9552-f7fe74d6057f for URL: https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:29:54,913 - clipod.status_manager - INFO - Created job 3c47231b-bd2c-4ef6-9552-f7fe74d6057f
+2025-04-04 23:29:54,915 - clipod.processor - INFO - Starting processing job 3c47231b-bd2c-4ef6-9552-f7fe74d6057f for URL: https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:29:54,915 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:29:54,916 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=74Z7CwkQNNg
+2025-04-04 23:29:54,963 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    logger.error(f"FFmpeg test failed with return code {e.returncode}: {e.stderr}")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:29:54,965 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:39:49,457 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:40:33,038 - clipod - INFO - Starting job 7bcc3aed-2b52-4726-aa32-ba72dccc5645 for URL: https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:40:33,041 - clipod.status_manager - INFO - Created job 7bcc3aed-2b52-4726-aa32-ba72dccc5645
+2025-04-04 23:40:33,045 - clipod.processor - INFO - Starting processing job 7bcc3aed-2b52-4726-aa32-ba72dccc5645 for URL: https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:40:33,045 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:40:33,045 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:40:33,099 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    logger.error(f"FFmpeg test failed with return code {e.returncode}: {e.stderr}")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:40:33,104 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:41:15,882 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:41:23,172 - clipod - INFO - Starting job fec15cb5-14cf-4b40-954c-815bd6d3ad88 for URL: https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:41:23,173 - clipod.status_manager - INFO - Created job fec15cb5-14cf-4b40-954c-815bd6d3ad88
+2025-04-04 23:41:23,175 - clipod.processor - INFO - Starting processing job fec15cb5-14cf-4b40-954c-815bd6d3ad88 for URL: https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:41:23,175 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:41:23,176 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:41:23,216 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    logger.error(f"FFmpeg test failed with return code {e.returncode}: {e.stderr}")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:41:23,218 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:42:32,733 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:42:43,296 - clipod - INFO - Starting job 4c17cb2a-aad1-4f08-aba6-ad5567638423 for URL: https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:42:43,297 - clipod.status_manager - INFO - Created job 4c17cb2a-aad1-4f08-aba6-ad5567638423
+2025-04-04 23:42:43,298 - clipod.processor - INFO - Starting processing job 4c17cb2a-aad1-4f08-aba6-ad5567638423 for URL: https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:42:43,298 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:42:43,299 - clipod.processor - INFO - Downloading video from https://www.youtube.com/watch?v=M-mtdN6R3bQ
+2025-04-04 23:42:43,345 - clipod.processor - ERROR - Error downloading video: [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 197, in download_youtube_video
+    except subprocess.CalledProcessError as e:
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1642, in extract_info
+    return self.__extract_info(url, self.get_info_extractor(key), download, extra_info, process)
+           ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1653, in wrapper
+    return func(self, *args, **kwargs)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 1788, in __extract_info
+    ie_result = ie.extract(url)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 746, in extract
+    self.to_screen('Extracting URL: %s' % (
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+        url if self.get_param('verbose') else truncate_string(url, 100, 20)))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/extractor/common.py", line 1212, in to_screen
+    self._downloader.to_screen(f'[{self.IE_NAME}] {msg}', *args, **kwargs)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 959, in to_screen
+    self._write_string(
+    ~~~~~~~~~~~~~~~~~~^
+        '{}{}'.format(self._bidi_workaround(message), ('' if skip_eol else '\n')),
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        self._out_files.screen, only_once=only_once)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/YoutubeDL.py", line 940, in _write_string
+    write_string(message, out=out, encoding=self.params.get('encoding'))
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/yt_dlp/utils/_utils.py", line 1486, in write_string
+    out.flush()
+    ~~~~~~~~~^^
+BrokenPipeError: [Errno 32] Broken pipe
+2025-04-04 23:42:43,348 - clipod.processor - ERROR - Error downloading video: Failed to download video: [Errno 32] Broken pipe
+2025-04-04 23:43:52,383 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:52:48,179 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:54:17,835 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:55:12,382 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:56:10,487 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:56:18,265 - clipod - INFO - Starting job 10c95ebc-a9f4-4bb2-8a7c-9decc1898c84 for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:56:18,265 - clipod.status_manager - INFO - Created job 10c95ebc-a9f4-4bb2-8a7c-9decc1898c84
+2025-04-04 23:56:18,265 - clipod - INFO - Starting processing for job 10c95ebc-a9f4-4bb2-8a7c-9decc1898c84
+2025-04-04 23:56:18,266 - clipod.processor - INFO - Starting processing job 10c95ebc-a9f4-4bb2-8a7c-9decc1898c84 for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:56:18,266 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:56:18,266 - clipod.processor - INFO - Downloading video from https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:56:18,266 - clipod.processor - ERROR - Error processing video: StatusManager.update_status() takes 2 positional arguments but 6 were given
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 57, in process_youtube_video
+    status_manager.update_status(job_id, "processing", "downloading", 0, "Downloading video")
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: StatusManager.update_status() takes 2 positional arguments but 6 were given
+2025-04-04 23:56:32,851 - clipod - INFO - Starting job d03cfc46-e252-4a2a-8972-6159e6cd1856 for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:56:32,852 - clipod.status_manager - INFO - Created job d03cfc46-e252-4a2a-8972-6159e6cd1856
+2025-04-04 23:56:32,852 - clipod - INFO - Starting processing for job d03cfc46-e252-4a2a-8972-6159e6cd1856
+2025-04-04 23:56:32,853 - clipod.processor - INFO - Starting processing job d03cfc46-e252-4a2a-8972-6159e6cd1856 for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:56:32,853 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:56:32,853 - clipod.processor - INFO - Downloading video from https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:56:32,853 - clipod.processor - ERROR - Error processing video: StatusManager.update_status() takes 2 positional arguments but 6 were given
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 57, in process_youtube_video
+    status_manager.update_status(job_id, "processing", "downloading", 0, "Downloading video")
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: StatusManager.update_status() takes 2 positional arguments but 6 were given
+2025-04-04 23:57:16,830 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-04 23:57:24,286 - clipod - INFO - Starting job 274c5d62-e881-4509-b23f-b6520030cade for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:57:24,286 - clipod.status_manager - INFO - Created job 274c5d62-e881-4509-b23f-b6520030cade
+2025-04-04 23:57:24,286 - clipod - INFO - Starting processing for job 274c5d62-e881-4509-b23f-b6520030cade
+2025-04-04 23:57:24,286 - clipod.processor - INFO - Starting processing job 274c5d62-e881-4509-b23f-b6520030cade for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:57:24,287 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-04 23:57:24,287 - clipod.processor - INFO - Downloading video from https://youtu.be/M-mtdN6R3bQ
+2025-04-04 23:57:24,287 - clipod.processor - INFO - Running download script: /Users/timohaseloff/tikod/clipod/downloads/274c5d62-e881-4509-b23f-b6520030cade/download_script.sh
+2025-04-05 00:02:24,295 - clipod.processor - ERROR - Error downloading video: Command '['/bin/bash', '/Users/timohaseloff/tikod/clipod/downloads/274c5d62-e881-4509-b23f-b6520030cade/download_script.sh']' timed out after 300 seconds
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 89, in process_youtube_video
+    stdout, stderr = process.communicate(timeout=300)
+                     ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 2131, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 1265, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/bin/bash', '/Users/timohaseloff/tikod/clipod/downloads/274c5d62-e881-4509-b23f-b6520030cade/download_script.sh']' timed out after 300 seconds
+2025-04-05 00:02:24,324 - clipod - INFO - Starting job b9ccd8f4-bc0a-455b-ada1-f12385a45a6f for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-05 00:02:24,324 - clipod.status_manager - INFO - Created job b9ccd8f4-bc0a-455b-ada1-f12385a45a6f
+2025-04-05 00:02:24,324 - clipod - INFO - Starting processing for job b9ccd8f4-bc0a-455b-ada1-f12385a45a6f
+2025-04-05 00:02:24,325 - clipod.processor - INFO - Starting processing job b9ccd8f4-bc0a-455b-ada1-f12385a45a6f for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-05 00:02:24,326 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-05 00:02:24,326 - clipod.processor - INFO - Downloading video from https://youtu.be/M-mtdN6R3bQ
+2025-04-05 00:02:24,328 - clipod.processor - INFO - Running download script: /Users/timohaseloff/tikod/clipod/downloads/b9ccd8f4-bc0a-455b-ada1-f12385a45a6f/download_script.sh
+2025-04-05 00:07:24,341 - clipod.processor - ERROR - Error downloading video: Command '['/bin/bash', '/Users/timohaseloff/tikod/clipod/downloads/b9ccd8f4-bc0a-455b-ada1-f12385a45a6f/download_script.sh']' timed out after 300 seconds
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 89, in process_youtube_video
+    # Start the process
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 1221, in communicate
+    stdout, stderr = self._communicate(input, endtime, timeout)
+                     ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 2131, in _communicate
+    self._check_timeout(endtime, orig_timeout, stdout, stderr)
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/subprocess.py", line 1265, in _check_timeout
+    raise TimeoutExpired(
+    ...<2 lines>...
+            stderr=b''.join(stderr_seq) if stderr_seq else None)
+subprocess.TimeoutExpired: Command '['/bin/bash', '/Users/timohaseloff/tikod/clipod/downloads/b9ccd8f4-bc0a-455b-ada1-f12385a45a6f/download_script.sh']' timed out after 300 seconds
+2025-04-05 11:18:29,051 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-05 11:18:37,026 - clipod - INFO - Starting job 34217053-ca9c-453b-a228-cad4ab9ec127 for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-05 11:18:37,027 - clipod.status_manager - INFO - Created job 34217053-ca9c-453b-a228-cad4ab9ec127
+2025-04-05 11:18:37,027 - clipod - INFO - Starting processing for job 34217053-ca9c-453b-a228-cad4ab9ec127
+2025-04-05 11:18:37,028 - clipod.processor - INFO - Starting processing job 34217053-ca9c-453b-a228-cad4ab9ec127 for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-05 11:18:37,028 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-05 11:18:37,028 - clipod.processor - INFO - Downloading video from https://youtu.be/M-mtdN6R3bQ
+2025-04-05 11:18:37,030 - clipod.processor - INFO - Running download script: /Users/timohaseloff/tikod/clipod/downloads/34217053-ca9c-453b-a228-cad4ab9ec127/download_script.sh
+2025-04-05 11:26:03,363 - clipod.processor - INFO - Successfully downloaded video to /Users/timohaseloff/tikod/clipod/downloads/34217053-ca9c-453b-a228-cad4ab9ec127/video.mp4
+2025-04-05 11:26:03,364 - clipod.processor - INFO - Transcribing video /Users/timohaseloff/tikod/clipod/downloads/34217053-ca9c-453b-a228-cad4ab9ec127/video.mp4
+2025-04-05 11:26:03,365 - clipod.processor - INFO - Extracting audio using ffmpeg at /opt/homebrew/bin/ffmpeg
+2025-04-05 11:26:03,365 - clipod.processor - INFO - Running command: /opt/homebrew/bin/ffmpeg -i /Users/timohaseloff/tikod/clipod/downloads/34217053-ca9c-453b-a228-cad4ab9ec127/video.mp4 -vn -acodec pcm_s16le -ar 16000 -ac 1 /Users/timohaseloff/tikod/clipod/transcripts/34217053-ca9c-453b-a228-cad4ab9ec127/audio.wav
+2025-04-05 11:26:03,754 - clipod.processor - INFO - Transcribing audio with Whisper model: medium
+2025-04-05 11:26:03,755 - clipod.processor - ERROR - Error transcribing video: No module named 'whisper'
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 408, in transcribe_video
+    import whisper
+ModuleNotFoundError: No module named 'whisper'
+2025-04-05 11:26:03,758 - clipod.processor - ERROR - Error transcribing video: Failed to transcribe video: No module named 'whisper'
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 408, in transcribe_video
+    import whisper
+ModuleNotFoundError: No module named 'whisper'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 182, in process_youtube_video
+    transcript_path, srt_path = await transcribe_video(video_path, job_id)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 433, in transcribe_video
+    raise Exception(f"Failed to transcribe video: {str(e)}")
+Exception: Failed to transcribe video: No module named 'whisper'
+2025-04-05 15:00:21,666 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-05 15:00:28,410 - clipod - INFO - Starting job 902edfbb-b560-4887-aff7-ba40e40ff9de for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-05 15:00:28,410 - clipod.status_manager - INFO - Created job 902edfbb-b560-4887-aff7-ba40e40ff9de
+2025-04-05 15:00:28,410 - clipod - INFO - Starting processing for job 902edfbb-b560-4887-aff7-ba40e40ff9de
+2025-04-05 15:00:28,411 - clipod.processor - INFO - Starting processing job 902edfbb-b560-4887-aff7-ba40e40ff9de for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-05 15:00:28,411 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-05 15:00:28,411 - clipod.processor - INFO - Downloading video from https://youtu.be/M-mtdN6R3bQ
+2025-04-05 15:00:28,412 - clipod.processor - INFO - Running download script: /Users/timohaseloff/tikod/clipod/downloads/902edfbb-b560-4887-aff7-ba40e40ff9de/download_script.sh
+2025-04-05 15:02:33,863 - clipod.processor - INFO - Successfully downloaded video to /Users/timohaseloff/tikod/clipod/downloads/902edfbb-b560-4887-aff7-ba40e40ff9de/video.mp4
+2025-04-05 15:02:33,864 - clipod.processor - INFO - Transcribing video /Users/timohaseloff/tikod/clipod/downloads/902edfbb-b560-4887-aff7-ba40e40ff9de/video.mp4
+2025-04-05 15:02:33,865 - clipod.processor - INFO - Extracting audio using ffmpeg at /opt/homebrew/bin/ffmpeg
+2025-04-05 15:02:33,865 - clipod.processor - INFO - Running command: /opt/homebrew/bin/ffmpeg -i /Users/timohaseloff/tikod/clipod/downloads/902edfbb-b560-4887-aff7-ba40e40ff9de/video.mp4 -vn -acodec pcm_s16le -ar 16000 -ac 1 /Users/timohaseloff/tikod/clipod/transcripts/902edfbb-b560-4887-aff7-ba40e40ff9de/audio.wav
+2025-04-05 15:02:34,088 - clipod.processor - INFO - Transcribing audio with Whisper model: medium
+2025-04-05 15:03:55,670 - clipod.processor - ERROR - Error transcribing video: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1319, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1338, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1384, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1479, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+                                          server_hostname=server_hostname)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 411, in transcribe_video
+    model = whisper.load_model(WHISPER_MODEL)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/whisper/__init__.py", line 137, in load_model
+    checkpoint_file = _download(_MODELS[name], download_root, in_memory)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/whisper/__init__.py", line 73, in _download
+    with urllib.request.urlopen(url) as source, open(download_target, "wb") as output:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1322, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)>
+2025-04-05 15:03:55,687 - clipod.processor - ERROR - Error transcribing video: Failed to transcribe video: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)>
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1319, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+              encode_chunked=req.has_header('Transfer-encoding'))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1338, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1384, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1333, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1093, in _send_output
+    self.send(msg)
+    ~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1037, in send
+    self.connect()
+    ~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/http/client.py", line 1479, in connect
+    self.sock = self._context.wrap_socket(self.sock,
+                ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+                                          server_hostname=server_hostname)
+                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 455, in wrap_socket
+    return self.sslsocket_class._create(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        sock=sock,
+        ^^^^^^^^^^
+    ...<5 lines>...
+        session=session
+        ^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1076, in _create
+    self.do_handshake()
+    ~~~~~~~~~~~~~~~~~^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/ssl.py", line 1372, in do_handshake
+    self._sslobj.do_handshake()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^
+ssl.SSLCertVerificationError: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 411, in transcribe_video
+    model = whisper.load_model(WHISPER_MODEL)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/whisper/__init__.py", line 137, in load_model
+    checkpoint_file = _download(_MODELS[name], download_root, in_memory)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/site-packages/whisper/__init__.py", line 73, in _download
+    with urllib.request.urlopen(url) as source, open(download_target, "wb") as output:
+         ~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 189, in urlopen
+    return opener.open(url, data, timeout)
+           ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 489, in open
+    response = self._open(req, data)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 506, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+                              '_open', req)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 466, in _call_chain
+    result = func(*args)
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1367, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                        context=self._context)
+                        ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/urllib/request.py", line 1322, in do_open
+    raise URLError(err)
+urllib.error.URLError: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)>
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 182, in process_youtube_video
+    transcript_path, srt_path = await transcribe_video(video_path, job_id)
+                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/timohaseloff/tikod/clipod/backend/app/worker/processor.py", line 433, in transcribe_video
+    raise Exception(f"Failed to transcribe video: {str(e)}")
+Exception: Failed to transcribe video: <urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1028)>
+2025-04-05 15:05:23,433 - clipod - INFO - Using frontend URL for CORS: http://localhost:5173
+2025-04-05 15:05:31,966 - clipod - INFO - Starting job fb39b54a-4685-425b-a198-fa5a15a12e15 for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-05 15:05:31,967 - clipod.status_manager - INFO - Created job fb39b54a-4685-425b-a198-fa5a15a12e15
+2025-04-05 15:05:31,967 - clipod - INFO - Starting processing for job fb39b54a-4685-425b-a198-fa5a15a12e15
+2025-04-05 15:05:31,968 - clipod.processor - INFO - Starting processing job fb39b54a-4685-425b-a198-fa5a15a12e15 for URL: https://youtu.be/M-mtdN6R3bQ
+2025-04-05 15:05:31,968 - clipod.processor - INFO - Using directories: Downloads=/Users/timohaseloff/tikod/clipod/downloads, Transcripts=/Users/timohaseloff/tikod/clipod/transcripts, Clips=/Users/timohaseloff/tikod/clipod/clips
+2025-04-05 15:05:31,968 - clipod.processor - INFO - Downloading video from https://youtu.be/M-mtdN6R3bQ
+2025-04-05 15:05:31,969 - clipod.processor - INFO - Running download script: /Users/timohaseloff/tikod/clipod/downloads/fb39b54a-4685-425b-a198-fa5a15a12e15/download_script.sh
+2025-04-05 15:07:36,881 - clipod.processor - INFO - Successfully downloaded video to /Users/timohaseloff/tikod/clipod/downloads/fb39b54a-4685-425b-a198-fa5a15a12e15/video.mp4
+2025-04-05 15:07:36,882 - clipod.processor - INFO - Transcribing video /Users/timohaseloff/tikod/clipod/downloads/fb39b54a-4685-425b-a198-fa5a15a12e15/video.mp4
+2025-04-05 15:07:36,882 - clipod.processor - INFO - Transcribing video /Users/timohaseloff/tikod/clipod/downloads/fb39b54a-4685-425b-a198-fa5a15a12e15/video.mp4 for job fb39b54a-4685-425b-a198-fa5a15a12e15
+2025-04-05 15:07:38,595 - clipod.processor - INFO - Loading Whisper model: medium
+2025-04-05 15:12:13,726 - clipod.processor - INFO - Starting transcription of /Users/timohaseloff/tikod/clipod/downloads/fb39b54a-4685-425b-a198-fa5a15a12e15/video.mp4
+2025-04-05 15:12:42,051 - clipod.processor - INFO - Transcription completed: /Users/timohaseloff/tikod/clipod/transcripts/fb39b54a-4685-425b-a198-fa5a15a12e15/transcript.json
+2025-04-05 15:12:42,244 - clipod.processor - INFO - Transcription completed: /Users/timohaseloff/tikod/clipod/transcripts/fb39b54a-4685-425b-a198-fa5a15a12e15/transcript.json
+2025-04-05 15:12:42,245 - clipod.processor - INFO - Identifying highlights from transcript
+2025-04-05 15:12:42,246 - clipod.processor - INFO - Identifying highlights from transcript /Users/timohaseloff/tikod/clipod/transcripts/fb39b54a-4685-425b-a198-fa5a15a12e15/transcript.json
+2025-04-05 15:12:45,561 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+2025-04-05 15:12:45,578 - clipod.processor - INFO - Identified 3 highlights
+2025-04-05 15:12:45,578 - clipod.processor - INFO - Identified 3 highlights
+2025-04-05 15:12:45,578 - clipod.processor - INFO - Generating clips from highlights
+2025-04-05 15:12:45,578 - clipod.processor - INFO - Generating 3 clips from /Users/timohaseloff/tikod/clipod/downloads/fb39b54a-4685-425b-a198-fa5a15a12e15/video.mp4
+2025-04-05 15:12:45,812 - clipod.processor - ERROR - Error generating clip 1: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 16.0.0 (clang-1600.0.26.6)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[Parsed_subtitles_2 @ 0x1497057e0] libass API version: 0x1703000
+[Parsed_subtitles_2 @ 0x1497057e0] libass source: tarball: 0.17.3
+[Parsed_subtitles_2 @ 0x1497057e0] Shaper: FriBidi 1.0.15 (SIMPLE) HarfBuzz-ng 11.0.0 (COMPLEX)
+[Parsed_subtitles_2 @ 0x1497057e0] Unable to open /Users/timohaseloff/tikod/clipod/clips/fb39b54a-4685-425b-a198-fa5a15a12e15/temp_44e225aa.srt
+[AVFilterGraph @ 0x149631410] Error initializing filters
+Failed to set value '[0]crop=in_w:in_w*16/9:(in_w-out_w)/2:(in_h-out_h)/2[s0];[s0]scale=-1:1920[s1];[s1]subtitles=/Users/timohaseloff/tikod/clipod/clips/fb39b54a-4685-425b-a198-fa5a15a12e15/temp_44e225aa.srt:force_style=FontSize\\=24\,PrimaryColour\\=&H00FFFFFF\,OutlineColour\\=&H00000000\,BackColour\\=&H80000000\,BorderStyle\\=4[s2]' for option 'filter_complex': Invalid data found when processing input
+Error parsing global options: Invalid data found when processing input
+
+2025-04-05 15:12:45,999 - clipod.processor - ERROR - Error generating clip 2: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 16.0.0 (clang-1600.0.26.6)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[Parsed_subtitles_2 @ 0x145005050] libass API version: 0x1703000
+[Parsed_subtitles_2 @ 0x145005050] libass source: tarball: 0.17.3
+[Parsed_subtitles_2 @ 0x145005050] Shaper: FriBidi 1.0.15 (SIMPLE) HarfBuzz-ng 11.0.0 (COMPLEX)
+[Parsed_subtitles_2 @ 0x145005050] Unable to open /Users/timohaseloff/tikod/clipod/clips/fb39b54a-4685-425b-a198-fa5a15a12e15/temp_5a815e0f.srt
+[AVFilterGraph @ 0x1450048b0] Error initializing filters
+Failed to set value '[0]crop=in_w:in_w*16/9:(in_w-out_w)/2:(in_h-out_h)/2[s0];[s0]scale=-1:1920[s1];[s1]subtitles=/Users/timohaseloff/tikod/clipod/clips/fb39b54a-4685-425b-a198-fa5a15a12e15/temp_5a815e0f.srt:force_style=FontSize\\=24\,PrimaryColour\\=&H00FFFFFF\,OutlineColour\\=&H00000000\,BackColour\\=&H80000000\,BorderStyle\\=4[s2]' for option 'filter_complex': Invalid data found when processing input
+Error parsing global options: Invalid data found when processing input
+
+2025-04-05 15:12:46,151 - clipod.processor - ERROR - Error generating clip 3: ffmpeg version 7.1.1 Copyright (c) 2000-2025 the FFmpeg developers
+  built with Apple clang version 16.0.0 (clang-1600.0.26.6)
+  configuration: --prefix=/opt/homebrew/Cellar/ffmpeg/7.1.1_1 --enable-shared --enable-pthreads --enable-version3 --cc=clang --host-cflags= --host-ldflags='-Wl,-ld_classic' --enable-ffplay --enable-gnutls --enable-gpl --enable-libaom --enable-libaribb24 --enable-libbluray --enable-libdav1d --enable-libharfbuzz --enable-libjxl --enable-libmp3lame --enable-libopus --enable-librav1e --enable-librist --enable-librubberband --enable-libsnappy --enable-libsrt --enable-libssh --enable-libsvtav1 --enable-libtesseract --enable-libtheora --enable-libvidstab --enable-libvmaf --enable-libvorbis --enable-libvpx --enable-libwebp --enable-libx264 --enable-libx265 --enable-libxml2 --enable-libxvid --enable-lzma --enable-libfontconfig --enable-libfreetype --enable-frei0r --enable-libass --enable-libopencore-amrnb --enable-libopencore-amrwb --enable-libopenjpeg --enable-libspeex --enable-libsoxr --enable-libzmq --enable-libzimg --disable-libjack --disable-indev=jack --enable-videotoolbox --enable-audiotoolbox --enable-neon
+  libavutil      59. 39.100 / 59. 39.100
+  libavcodec     61. 19.101 / 61. 19.101
+  libavformat    61.  7.100 / 61.  7.100
+  libavdevice    61.  3.100 / 61.  3.100
+  libavfilter    10.  4.100 / 10.  4.100
+  libswscale      8.  3.100 /  8.  3.100
+  libswresample   5.  3.100 /  5.  3.100
+  libpostproc    58.  3.100 / 58.  3.100
+[Parsed_subtitles_2 @ 0x124906860] libass API version: 0x1703000
+[Parsed_subtitles_2 @ 0x124906860] libass source: tarball: 0.17.3
+[Parsed_subtitles_2 @ 0x124906860] Shaper: FriBidi 1.0.15 (SIMPLE) HarfBuzz-ng 11.0.0 (COMPLEX)
+[Parsed_subtitles_2 @ 0x124906860] Unable to open /Users/timohaseloff/tikod/clipod/clips/fb39b54a-4685-425b-a198-fa5a15a12e15/temp_e6f4ff7f.srt
+[AVFilterGraph @ 0x124906130] Error initializing filters
+Failed to set value '[0]crop=in_w:in_w*16/9:(in_w-out_w)/2:(in_h-out_h)/2[s0];[s0]scale=-1:1920[s1];[s1]subtitles=/Users/timohaseloff/tikod/clipod/clips/fb39b54a-4685-425b-a198-fa5a15a12e15/temp_e6f4ff7f.srt:force_style=FontSize\\=24\,PrimaryColour\\=&H00FFFFFF\,OutlineColour\\=&H00000000\,BackColour\\=&H80000000\,BorderStyle\\=4[s2]' for option 'filter_complex': Invalid data found when processing input
+Error parsing global options: Invalid data found when processing input
+
+2025-04-05 15:12:46,151 - clipod.processor - INFO - Generated 0 clips
+2025-04-05 15:12:46,152 - clipod.processor - INFO - Processing completed for job fb39b54a-4685-425b-a198-fa5a15a12e15

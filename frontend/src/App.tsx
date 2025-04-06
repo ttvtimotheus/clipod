@@ -30,6 +30,8 @@ function App() {
 
     try {
       setIsProcessing(true)
+      console.log('Sending request to /api/process with URL:', youtubeUrl);
+      
       const response = await fetch('/api/process', {
         method: 'POST',
         headers: {
@@ -38,11 +40,16 @@ function App() {
         body: JSON.stringify({ url: youtubeUrl }),
       })
 
+      console.log('Response status:', response.status);
+      
       if (!response.ok) {
-        throw new Error('Failed to start processing')
+        const errorText = await response.text();
+        console.error('Error response:', errorText);
+        throw new Error(`Failed to start processing: ${errorText}`);
       }
 
       const data = await response.json()
+      console.log('Response data:', data);
       
       toast({
         title: 'Processing Started',
@@ -56,7 +63,7 @@ function App() {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Failed to start processing',
+        description: error instanceof Error ? error.message : 'Failed to start processing',
       })
       setIsProcessing(false)
     }
@@ -64,22 +71,31 @@ function App() {
 
   // Function to poll for status updates
   const pollStatus = async (jobId: string) => {
+    console.log('Starting to poll for job:', jobId);
     const interval = setInterval(async () => {
       try {
+        console.log('Polling status for job:', jobId);
         const response = await fetch(`/api/status/${jobId}`)
+        
+        console.log('Status response:', response.status);
         if (!response.ok) {
-          throw new Error('Failed to get status')
+          const errorText = await response.text();
+          console.error('Error response from status endpoint:', errorText);
+          throw new Error(`Failed to get status: ${errorText}`);
         }
 
         const statusData = await response.json()
+        console.log('Status data:', statusData);
         setStatus(statusData)
 
         // If processing is complete, fetch the clips
         if (statusData.status === 'completed') {
+          console.log('Processing completed, fetching clips');
           clearInterval(interval)
           setIsProcessing(false)
           fetchClips(jobId)
         } else if (statusData.status === 'failed') {
+          console.log('Processing failed:', statusData.error);
           clearInterval(interval)
           setIsProcessing(false)
           toast({
@@ -100,12 +116,18 @@ function App() {
   // Function to fetch clips for a job
   const fetchClips = async (jobId: string) => {
     try {
+      console.log('Fetching clips for job:', jobId);
       const response = await fetch(`/api/clips/${jobId}`)
+      
+      console.log('Clips response:', response.status);
       if (!response.ok) {
-        throw new Error('Failed to fetch clips')
+        const errorText = await response.text();
+        console.error('Error response from clips endpoint:', errorText);
+        throw new Error(`Failed to fetch clips: ${errorText}`);
       }
 
       const data = await response.json()
+      console.log('Clips data:', data);
       setClips(data.clips || [])
       
       toast({
@@ -117,7 +139,7 @@ function App() {
       toast({
         variant: 'destructive',
         title: 'Error',
-        description: 'Failed to fetch clips',
+        description: error instanceof Error ? error.message : 'Failed to fetch clips',
       })
     }
   }

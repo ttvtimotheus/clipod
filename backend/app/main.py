@@ -1,4 +1,4 @@
-from fastapi import FastAPI, BackgroundTasks, HTTPException, Depends
+from fastapi import FastAPI, HTTPException, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 from pydantic import BaseModel, HttpUrl
@@ -6,6 +6,7 @@ import os
 import logging
 from typing import List, Optional, Dict, Any
 import uuid
+import asyncio
 
 from .worker.processor import process_youtube_video
 from .utils.status_manager import StatusManager
@@ -28,10 +29,14 @@ app = FastAPI(
     version="0.1.0"
 )
 
+# Get frontend URL from environment variable
+frontend_url = os.getenv("FRONTEND_URL", "http://localhost:5173")
+logger.info(f"Using frontend URL for CORS: {frontend_url}")
+
 # Add CORS middleware
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],  # Frontend URL
+    allow_origins=[frontend_url, "http://localhost:5173", "http://localhost:5174", "http://192.168.178.24:5174"],  # Frontend URLs
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -69,7 +74,7 @@ async def root():
     return {"message": "Welcome to ClipOd API"}
 
 @app.post("/process")
-async def process_video(youtube_data: YouTubeURL, background_tasks: BackgroundTasks):
+async def process_video(youtube_data: YouTubeURL):
     """
     Start processing a YouTube video to generate TikTok clips
     """
@@ -79,15 +84,50 @@ async def process_video(youtube_data: YouTubeURL, background_tasks: BackgroundTa
     # Initialize status
     status_manager.create_job(job_id)
     
-    # Start processing in background
-    background_tasks.add_task(
-        process_youtube_video, 
-        str(youtube_data.url), 
-        job_id, 
-        status_manager
-    )
-    
-    return {"job_id": job_id, "message": "Processing started"}
+    try:
+        # Validate the URL before starting the task
+        url_str = str(youtube_data.url)
+        if "youtube.com" not in url_str and "youtu.be" not in url_str:
+            raise ValueError("URL is not a valid YouTube URL")
+        
+        # Start processing directly
+        logger.info(f"Starting processing for job {job_id}")
+        
+        # Create a task for processing
+        processing_task = asyncio.create_task(
+            process_youtube_video(url_str, job_id, status_manager)
+        )
+        
+        # Add error handling to the task
+        def handle_task_result(task):
+            try:
+                task.result()
+            except Exception as e:
+                logger.error(f"Error in background task for job {job_id}: {str(e)}", exc_info=True)
+                status_manager.update_status(
+                    job_id=job_id,
+                    status="failed",
+                    current_step="processing",
+                    progress=0,
+                    message="Processing failed",
+                    error=f"Processing error: {str(e)}"
+                )
+        
+        # Add the callback to handle errors
+        processing_task.add_done_callback(handle_task_result)
+        
+        return {"job_id": job_id, "message": "Processing started"}
+    except Exception as e:
+        logger.error(f"Error starting processing: {str(e)}", exc_info=True)
+        status_manager.update_status(
+            job_id=job_id,
+            status="failed",
+            current_step="starting",
+            progress=0,
+            message="Failed to start processing",
+            error=f"Error: {str(e)}"
+        )
+        return {"job_id": job_id, "message": "Processing failed to start", "error": str(e)}, 500
 
 @app.get("/status/{job_id}", response_model=ProcessStatus)
 async def get_status(job_id: str):

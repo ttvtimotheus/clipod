@@ -1,0 +1,51 @@
+Download started at 2025-04-05 15:05:31
+Command: /bin/bash /Users/timohaseloff/tikod/clipod/downloads/fb39b54a-4685-425b-a198-fa5a15a12e15/download_script.sh
+
+STDOUT: Starting download of https://youtu.be/M-mtdN6R3bQ at Sat Apr  5 15:05:31 CEST 2025
+STDERR: [debug] Command-line config: ['-f', 'best[height<=720]', '--ffmpeg-location', '/opt/homebrew/bin/ffmpeg', '-o', 'video.mp4', 'https://youtu.be/M-mtdN6R3bQ', '--verbose']
+STDOUT: [youtube] Extracting URL: https://youtu.be/M-mtdN6R3bQ
+STDERR: [debug] Encodings: locale UTF-8, fs utf-8, pref UTF-8, out utf-8 (No ANSI), error utf-8 (No ANSI), screen utf-8 (No ANSI)
+STDOUT: [youtube] M-mtdN6R3bQ: Downloading webpage
+STDERR: [debug] yt-dlp version stable@2025.03.31 from yt-dlp/yt-dlp [5e457af57] (pip)
+STDOUT: [youtube] M-mtdN6R3bQ: Downloading tv client config
+STDERR: [debug] Python 3.13.2 (CPython arm64 64bit) - macOS-15.0-arm64-arm-64bit-Mach-O (OpenSSL 3.0.15 3 Sep 2024)
+STDOUT: [youtube] M-mtdN6R3bQ: Downloading player 73381ccc-main
+STDERR: [debug] exe versions: ffmpeg 7.1.1 (setts), ffprobe 7.1.1
+STDOUT: [youtube] M-mtdN6R3bQ: Downloading tv player API JSON
+STDERR: [debug] Optional libraries: certifi-2025.01.31, requests-2.32.3, sqlite3-3.45.3, urllib3-2.3.0, websockets-15.0.1
+STDOUT: [youtube] M-mtdN6R3bQ: Downloading ios player API JSON
+STDERR: [debug] Proxy map: {}
+STDOUT: [youtube] M-mtdN6R3bQ: Downloading m3u8 information
+STDERR: [debug] Request Handlers: urllib, requests, websockets
+STDOUT: [info] M-mtdN6R3bQ: Downloading 1 format(s): 18
+STDERR: [debug] Plugin directories: none
+STDOUT: [download] Destination: video.mp4
+STDERR: [debug] Loaded 1850 extractors
+STDOUT: 
+STDERR: [debug] [youtube] Extracting signature function 73381ccc-main-107
+STDOUT: [download]   0.1% of    1.27MiB at  599.27KiB/s ETA 00:02
+STDERR: [debug] Loading youtube-sigfuncs.73381ccc-main-107 from cache
+STDOUT: [download]   0.2% of    1.27MiB at    1.11MiB/s ETA 00:01
+STDERR: [debug] Loading youtube-nsig.73381ccc-main from cache
+STDOUT: [download]   0.5% of    1.27MiB at    2.32MiB/s ETA 00:00
+STDERR: [debug] [youtube] Decrypted nsig Kw8k4envDXJRu_Dg- => uiOBamEs2flEKg
+STDOUT: [download]   1.2% of    1.27MiB at    4.65MiB/s ETA 00:00
+STDERR: [debug] [youtube] Decrypted nsig y1EHbGkGJnKudBkmv => osqoyjbyj_ZA-Q
+STDOUT: [download]   2.4% of    1.27MiB at    3.05MiB/s ETA 00:00
+STDERR: [debug] [youtube] Extracting signature function 73381ccc-main-103
+STDOUT: [download]   4.8% of    1.27MiB at    3.40MiB/s ETA 00:00
+STDERR: [debug] Loading youtube-sigfuncs.73381ccc-main-103 from cache
+STDOUT: [download]   9.7% of    1.27MiB at    5.07MiB/s ETA 00:00
+STDERR: [debug] [youtube] M-mtdN6R3bQ: ios client https formats require a GVS PO Token which was not provided. They will be skipped as they may yield HTTP Error 403. You can manually pass a GVS PO Token for this client with --extractor-args "youtube:po_token=ios.gvs+XXX". For more information, refer to  https://github.com/yt-dlp/yt-dlp/wiki/PO-Token-Guide . To enable these broken formats anyway, pass --extractor-args "youtube:formats=missing_pot"
+STDOUT: [download]  19.6% of    1.27MiB at    5.54MiB/s ETA 00:00
+STDERR: [debug] Sort order given by extractor: quality, res, fps, hdr:12, source, vcodec, channels, acodec, lang, proto
+STDOUT: [download]  39.2% of    1.27MiB at    7.19MiB/s ETA 00:00
+STDERR: [debug] Formats sorted by: hasvid, ie_pref, quality, res, fps, hdr:12(7), source, vcodec, channels, acodec, lang, proto, size, br, asr, vext, aext, hasaud, id
+STDOUT: [download]  78.5% of    1.27MiB at    8.74MiB/s ETA 00:00
+STDERR: [debug] Invoking http downloader on "https://rr3---sn-4g5e6nss.googlevideo.com/videoplayback?expire=1743880014&ei=7irxZ-WDLNrNi9oP9JLx6AM&ip=85.208.129.238&id=o-AJIOdoKEgWdsUa5F2r4xj5Z3y_DC-DCFPHdC8GIxgB1b&itag=18&source=youtube&requiressl=yes&xpc=EgVo2aDSNQ%3D%3D&met=1743858414%2C&mh=wl&mm=31%2C29&mn=sn-4g5e6nss%2Csn-4g5ednse&ms=au%2Crdu&mv=m&mvi=3&pl=22&rms=au%2Cau&gcr=de&initcwndbps=2936250&bui=AccgBcOxdyh15YGo8kI0Mme2Qa0pE7bp4OtmIfHqDZ-BiUrCtGfxqmfl2R-zMZBgeN0A69I5OpOhLs27&vprv=1&svpuc=1&mime=video%2Fmp4&ns=ONfYpmqBS7_W65VtqKuxxSwQ&rqh=1&cnr=14&ratebypass=yes&dur=29.930&lmt=1724502524745327&mt=1743858066&fvip=1&lmw=1&c=TVHTML5&sefc=1&txp=5430434&n=uiOBamEs2flEKg&sparams=expire%2Cei%2Cip%2Cid%2Citag%2Csource%2Crequiressl%2Cxpc%2Cgcr%2Cbui%2Cvprv%2Csvpuc%2Cmime%2Cns%2Crqh%2Ccnr%2Cratebypass%2Cdur%2Clmt&lsparams=met%2Cmh%2Cmm%2Cmn%2Cms%2Cmv%2Cmvi%2Cpl%2Crms%2Cinitcwndbps&lsig=ACuhMU0wRAIgIVj0Oo2FN2-PA6wUjBYJCvRdLK5m5heXRLWEZpSjniUCIE7h-tHe4y5N9WqVsHEnOaDosbsyN-GDN-awuT4G5weL&sig=AJfQdSswRQIhAPzWYy34l_m5JilC3R_eoOsLSdPs5aaKz7XdZ0zmPLuWAiBoOgkSRDDS8HvQHlhfRpEMrgHp-MzHlaViapEavHXnoA%3D%3D"
+STDOUT: [download] 100.0% of    1.27MiB at    8.07MiB/s ETA 00:00
+STDOUT (final): 
+Download completed at Sat Apr  5 15:07:36 CEST 2025
+
+
+Process completed with return code 0
